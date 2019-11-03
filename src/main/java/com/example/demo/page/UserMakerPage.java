@@ -1,5 +1,6 @@
 package com.example.demo.page;
 
+import com.example.demo.page.panel.TopPanelPage;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.link.Link;
@@ -20,6 +21,9 @@ public class UserMakerPage extends WebPage {
     private IUserService userService;
 
     public UserMakerPage() {
+
+        add(new TopPanelPage("TopPanelPage"));
+
         IModel<String> userNameModel = Model.of("");
         IModel<String> userPassModel = Model.of("");
 
@@ -38,8 +42,12 @@ public class UserMakerPage extends WebPage {
                         + userPass;
                 System.out.println(msg);
 
-                userService.registerUser(userName, userPass);
-                setResponsePage(new UserMakerCompPage(userNameModel));
+
+
+                //TODOエラー処理ができてへん
+               var m = userService.registerUser(userName, userPass);
+                   setResponsePage(new UserMakerCompPage(m));
+
             }
         };
 

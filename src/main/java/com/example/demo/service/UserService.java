@@ -3,7 +3,9 @@ package com.example.demo.service;
 import com.example.demo.data.AuthUser;
 import com.example.demo.repository.IAuthUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 
@@ -18,10 +20,19 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public void registerUser(String userName, String userPass ){
+    public String registerUser(String userName, String userPass ) {
+        try {
         int n = authUserRepos.insert(userName, userPass);
-        System.out.println("記録行数:" + n);
+            System.out.println("記録行数:" + n);
+
+            var message = n>0? n+"件を追加":"追加失敗 ";
+                   return message;
+    }catch (DataAccessException e) {
+            e.printStackTrace();
+        }
+        return "error ユーザがすでに存在しています。";
     }
+
 
     @Override
     public boolean removeUser(String userName){

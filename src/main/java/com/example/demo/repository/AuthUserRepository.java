@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.sql.SQLDataException;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 
 @Repository
@@ -24,10 +26,10 @@ public class AuthUserRepository implements IAuthUserRepository{
     }
 
     @Override
-    public int insert(String userName, String userPass){
-        String sql = "insert into auth_user values (?,?)";
-        int n = jdbc.update(sql, userName, userPass);
-        return n;
+    public int insert(String userName, String userPass) {
+            String sql = "insert into auth_user values (?,?)";
+            int n = jdbc.update(sql, userName, userPass);
+            return n;
     }
 
     @Override

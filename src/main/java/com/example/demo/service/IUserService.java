@@ -7,7 +7,7 @@ import java.util.List;
 public interface IUserService {
 
     //登録ユーザ、パスワード
-    public void registerUser(String userName,String userPass);
+    public String registerUser(String userName,String userPass);
     //削除ユーザ
     public boolean removeUser(String userName);
 

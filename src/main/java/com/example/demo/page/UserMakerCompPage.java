@@ -11,9 +11,12 @@ import org.wicketstuff.annotation.mount.MountPath;
 @MountPath("UserMakerComp")
 public class UserMakerCompPage extends WebPage {
 
-    public UserMakerCompPage(IModel<String> userNameModel){
-        Label userNameLabel = new Label("userName",userNameModel);
-        add(userNameLabel);
+    public UserMakerCompPage(String m){
+       // Label userNameLabel = new Label("userName",userNameModel);
+        //add(userNameLabel);
+
+        Label mLabel = new Label("m",m);
+        add(mLabel);
 
         Link<Void> toHomePageLink = new BookmarkablePageLink<Void>("toHomePage",HomePage.class);
         add(toHomePageLink);

@@ -37,8 +37,6 @@ public class UserDeletePage extends WebPage {
                 if( userService.removeUser(userName)){
                     setResponsePage(new UserDeleteCompPage(userNameModel));
                 }else{
-                    //Todo　Deleteエラーページを作って返すようにする
-                    //error("mistake");
                     setResponsePage(new UserDeleteErrorPage());
                 }
 
